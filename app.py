@@ -1,10 +1,10 @@
 import requests
 import re
 
-# 🔐 Firecrawl API Key
-FIRECRAWL_API_KEY = "Your api key here" #put you firecral apikey here (log into firecrawl and get free api keys)
+#Firecrawl API Key
+FIRECRAWL_API_KEY = "Your api key here" #put you firecrawl apikey here (log into firecrawl and get free api keys)
 
-# 🧽 Clean and extract important bullet points
+# Clean and extract important bullet points
 def clean_and_format(text):
     # Remove markdown links and URLs
     text = re.sub(r'\[.*?\]\(.*?\)', '', text)
@@ -41,7 +41,7 @@ def clean_and_format(text):
 
     return bullets
 
-# 🔍 Scrape webpage content using Firecrawl
+#Scrape webpage content using Firecrawl
 def scrape_webpage(url):
     print(f"🔍 Scraping: {url}")
     headers = {
@@ -59,7 +59,7 @@ def scrape_webpage(url):
 
     return response.json()["data"].get("markdown", "")
 
-# 💾 Save the clean bullets to a text file
+#Save the clean bullets to a text file
 def save_to_txt(bullets, url):
     with open("scraped_notes.txt", "w", encoding="utf-8") as f:
         f.write(f"📝 Notes from: {url}\n\n")
@@ -67,7 +67,7 @@ def save_to_txt(bullets, url):
             f.write(f"{bullet}\n")
     print("✅ Notes saved to 'scraped_notes.txt'")
 
-# 🚀 Main
+#Main
 def main():
     print("🔗 Enter the URL:")
     url = input("→ ").strip()
